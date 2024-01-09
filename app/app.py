@@ -1,3 +1,5 @@
+# Copyright (c) [2024] [Sebastian Kliem]
+
 from flask import Flask, render_template, request, jsonify
 from utils.Functions import Calculate_Steam
 

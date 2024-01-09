@@ -1,3 +1,5 @@
+# Copyright (c) [2024] [Sebastian Kliem]
+
 class Calculate_Steam:
     """
     Calculates the amount of Water that is used.

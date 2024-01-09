@@ -1,3 +1,7 @@
+/*
+Copyright (c) [2024] [Sebastian Kliem]
+*/
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('calculation_variables').addEventListener('submit', function (e) {
         e.preventDefault();
