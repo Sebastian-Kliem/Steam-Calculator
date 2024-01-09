@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>steam-calculator</title>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='Images/Favicons/favicon-16x16.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/Favicons/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ url_for('static', filename='images/Favicons/favicon-96x96.png') }}">
+
+        <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='Images/Favicons/android-icon-192x192.png') }}">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="{{ url_for('static', filename='Images/Favicons/apple-touch-icon-57x57.png') }}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{ url_for('static', filename='Images/Favicons/apple-touch-icon-60x60.png') }}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='Images/Favicons/apple-touch-icon-72x72.png') }}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ url_for('static', filename='Images/Favicons/apple-touch-icon-76x76.png') }}">
+        <link rel="apple-touch-icon" sizes="114x114" href="{{ url_for('static', filename='Images/Favicons/apple-touch-icon-114x114.png') }}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ url_for('static', filename='Images/Favicons/apple-touch-icon-120x120.png') }}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='Images/Favicons/apple-touch-icon-144x144.png') }}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ url_for('static', filename='Images/Favicons/apple-touch-icon-152x152.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='Images/Favicons/apple-touch-icon-180x180.png') }}">
+    </head>
+    <body>
+        <div class="header">
+            <h1>
+                Steam-Calculator
+            </h1>
+            <p>
+                This app calculates the amount of water that is excepted by given values.
+            </p>
+        </div>
+
+        <div>
+            <form id="calculation_variables" class="form" method="post">
+
+                <label for="temperature">Temprature: </label>
+                <input type="number" id="temperature" name="temperature" min="30" max="572" value="42">
+                <br>
+                <br>
+
+                <div class="temprature_setting">
+                    <input type="radio" id="celsius" name="temperature_setting" value="Celsius" checked>
+                    <label for="celsius">Celsius</label>
+                </div>
+
+                <div class="temprature_setting">
+                    <input type="radio" id="fahrenheit" name="temperature_setting" value="Fahrenheit">
+                    <label for="fahrenheit">Fahrenheit</label>
+                </div>
+                <label for="max_flow_in">Maximum flow of the valve in l/h</label>
+                <input type="number" id="max_flow_in" name="max_flow_in" min="0" max="16" value="0">
+                <br>
+                <br>
+
+                <label for="humidity">Humidity in %</label>
+                <input type="number" id="humidity" name="humidity" min="0" max="100" value="0">
+
+                <br>
+
+                <label for="high_temperature">Parameter for high-temperature enabled?</label>
+                <input type="checkbox" id="high_temperature" name="high_temperature">
+                <br>
+                <br>
+
+                <input type="submit">
+
+            </form>
+        </div>
+        <div >
+            <p class="ergebnis_text">
+                Der berechnete Wert ist: <span id="calculated_water_per_minute">0</span> ml per minute
+            </p>
+            <p class="ergebnis_text">
+                Der berechnete Wert ist: <span id="calculated_water_per_hour">0</span> l per hour
+            </p>
+        </div>
+
+    <script src="{{ url_for('static', filename='scripts/javasript.js') }}"></script>
+    </body>
+</html>
