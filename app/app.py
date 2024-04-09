@@ -1,9 +1,24 @@
 # Copyright (c) [2024] [Sebastian Kliem]
+import pprint
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, make_response
 from utils.Functions import Calculate_Steam
 
 app = Flask(__name__, static_url_path='/steamcalculator/static')
+
+
+@app.after_request
+def add_header(response):
+    """
+    Add headers to both force latest IE rendering engine or Chrome Frame,
+    and also to cache the rendered page for 10 minutes.
+    """
+
+    if request.path.startswith('/steamcalculator/static/'):
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Expires'] = '0'
+    return response
 
 
 @app.route('/', methods=["GET", "POST"])
