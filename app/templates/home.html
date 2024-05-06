@@ -39,37 +39,51 @@ Copyright (c) [2024] [Sebastian Kliem]
         <div>
             <form id="calculation_variables" class="form" method="post">
 
-                <label for="temperature">Temprature: </label>
-                <input type="number" id="temperature" name="temperature" min="30" max="572" value="100">
-                <br>
-                <br>
+                <p>
+                    Calculationsmethod:
+                    <div class="temprature_setting">
+                        <input type="radio" id="without" name="calculation_method" value="0" checked>
+                        <label for="without">without -15 correction:</label>
+                    </div>
+                    <div class="temprature_setting">
+                        <input type="radio" id="with" name="calculation_method" value="1">
+                        <label for="with">with -15 correction:</label>
+                    </div>
+                </p>
 
-                <div class="temprature_setting">
-                    <input type="radio" id="celsius" name="temperature_setting" value="Celsius" checked>
-                    <label for="celsius">Celsius</label>
-                </div>
+                <p>
+                    <label for="temperature">Temperature: </label>
+                    <input type="number" id="temperature" name="temperature" min="30" max="572" value="100">
 
-                <div class="temprature_setting">
-                    <input type="radio" id="fahrenheit" name="temperature_setting" value="Fahrenheit">
-                    <label for="fahrenheit">Fahrenheit</label>
-                </div>
-                <label for="max_flow_in">Maximum flow of the valve in l/h</label>
-                <input type="number" id="max_flow_in" name="max_flow_in" min="0" max="999" value="10">
-                <br>
-                <br>
+                    <div class="temprature_setting">
+                        <input type="radio" id="celsius" name="temperature_setting" value="Celsius" checked>
+                        <label for="celsius">Celsius</label>
+                    </div>
 
-                <label for="humidity">Humidity in %</label>
-                <input type="number" id="humidity" name="humidity" min="0" max="100" value="100">
+                    <div class="temprature_setting">
+                        <input type="radio" id="fahrenheit" name="temperature_setting" value="Fahrenheit">
+                        <label for="fahrenheit">Fahrenheit</label>
+                    </div>
+                </p>
 
-                <br>
+                <p>
+                    <label for="max_flow_in">Maximum flow of the valve in l/h</label>
+                    <input type="number" id="max_flow_in" name="max_flow_in" min="0" max="999" value="10">
+                </p>
 
-                <label for="high_temperature">Parameter for high-temperature enabled?</label>
-                <input type="checkbox" id="high_temperature" name="high_temperature">
-                <br>
-                <br>
+                <p>
+                    <label for="humidity">Humidity in %</label>
+                    <input type="number" id="humidity" name="humidity" min="0" max="100" value="100">
+                </p>
 
-                <input type="submit">
+                <p>
+                    <label for="high_temperature">Parameter for high-temperature enabled?</label>
+                    <input type="checkbox" id="high_temperature" name="high_temperature" checked>
+                </p>
 
+                <p>
+                    <input type="submit">
+                </p>
             </form>
         </div>
         <div >

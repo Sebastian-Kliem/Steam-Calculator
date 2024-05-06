@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('calculation_variables').addEventListener('submit', function (e) {
         e.preventDefault();
 
+        let calculation_mode_setting = document.querySelector('input[name="calculation_method"]:checked').value === '1';
         let temperature = document.getElementById('temperature').value;
         let temperature_setting = document.querySelector('input[name="temperature_setting"]:checked').value;
         let max_flow_in = document.getElementById('max_flow_in').value;
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         let data = {
+            calculation_mode_setting: calculation_mode_setting,
             temperature: temperature,
             temperature_setting: temperature_setting,
             max_flow_in: max_flow_in,

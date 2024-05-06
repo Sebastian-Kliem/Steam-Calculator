@@ -10,12 +10,14 @@ class Calculate_Steam:
                  humitidy: int,
                  max_flow: int,
                  celsius: bool = True,
-                 high_temperature: bool = False):
+                 high_temperature: bool = False,
+                 calculation_method_correction: bool = False):
 
 
         self._humitidy: int = humitidy
         self._max_flow: int = max_flow
         self._high_temprature: bool = high_temperature
+        self._calculation_method_correction = calculation_method_correction
 
         self._milliliter_per_minute: float = 0.0
         self._liter_in_hour: float = 0.0
@@ -120,7 +122,9 @@ class Calculate_Steam:
         :return:
         """
 
-        return ((self._humitidy - 15) / 75) * 675
+        if self._calculation_method_correction:
+            return ((self._humitidy - 15) / 75) * 675
+        return (self._humitidy / 90) * 675
 
     def _calc_low_huminidy_high_temprature(self) -> float:
         """

@@ -39,7 +39,9 @@ def calculation():
                                                      humitidy=int(entry_content["humidity"]),
                                                      max_flow=int(entry_content["max_flow_in"]),
                                                      celsius=celsius,
-                                                     high_temperature=entry_content["high_temperature"])
+                                                     high_temperature=entry_content["high_temperature"],
+                                                     calculation_method_correction=entry_content["calculation_mode_setting"]
+                                                     )
 
         result = calculator.get_amount_of_water()
         return jsonify(used_water_per_minute=result[0], used_water_per_hour=result[1])
