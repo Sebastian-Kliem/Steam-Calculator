@@ -2,6 +2,15 @@
 Copyright (c) [2024] [Sebastian Kliem]
 */
 
+let host = window.location.hostname;
+let port = window.location.port;
+let protocol = window.location.protocol;
+let url = window.location.href
+//let pfad = `${protocol}//${host}:${port}/steamcalculator/calculation`;
+let pfad = `${url}/calculation`;
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('calculation_variables').addEventListener('submit', function (e) {
         e.preventDefault();
@@ -13,10 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let humidity = document.getElementById('humidity').value;
         let high_temperature = document.getElementById('high_temperature').checked;
 
-        let host = window.location.hostname;
-        let port = window.location.port;
-        let protocol = window.location.protocol;
-        let pfad = `${protocol}//${host}:${port}/calculation`;
+
 
 
         let data = {

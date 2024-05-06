@@ -44,6 +44,7 @@ def calculation():
                                                      )
 
         result = calculator.get_amount_of_water()
+
         return jsonify(used_water_per_minute=result[0], used_water_per_hour=result[1])
 
 
