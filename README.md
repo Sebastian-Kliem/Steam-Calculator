@@ -1,6 +1,6 @@
 # Steam Calculator
 
-This app calcutlate the amount of used water by given values for Eloma combi-steamers
+This app calculate the amount of used water by given values for Eloma combi-steamers
 
 ## License
 

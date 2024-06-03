@@ -16,7 +16,7 @@ class Calculate_Steam:
 
         self._humitidy: int = humitidy
         self._max_flow: int = max_flow
-        self._high_temprature: bool = high_temperature
+        self._high_temperature: bool = high_temperature
         self._calculation_method_correction = calculation_method_correction
 
         self._milliliter_per_minute: float = 0.0
@@ -56,11 +56,11 @@ class Calculate_Steam:
         Starts the calculation to get the faktor.
         :return:
         """
-        # in these cases no water is used:
-        if not self._high_temprature and self._temperature > 230:
+        # in these cases, no water is used:
+        if not self._high_temperature and self._temperature > 230:
             return 0.0
 
-        if self._high_temprature and self._temperature > 330:
+        if self._high_temperature and self._temperature > 330:
             return 0.0
 
         return self._select_formula_cooking()
@@ -71,31 +71,31 @@ class Calculate_Steam:
         :return:
         """
 
-        if self._humitidy < 20:
+        if self._calculation_method_correction and self._humitidy < 20:
             if self._temperature <= 120:
-                return self._calc_very_low_huminidy_low_temprature()
+                return self._calc_very_low_humidity_low_temperature()
 
             if self._temperature > 120:
-                return self._calc_very_low_huminidy_high_temprature()
+                return self._calc_very_low_humidity_high_temperature()
 
         elif self._humitidy < 90:
             if self._temperature <= 120:
-                return self._calc_low_huminidy_low_temprature()
+                return self._calc_low_humidity_low_temperature()
 
             if self._temperature > 120:
-                return self._calc_low_huminidy_high_temprature()
+                return self._calc_low_humidity_high_temperature()
 
         elif self._humitidy >= 90:
             if self._temperature < 110:
-                return self._calc_high_huminidy_low_temprature()
+                return self._calc_high_humidity_low_temperature()
 
             if 110 <= self._temperature < 120:
-                return self._calc_high_huminidy_middle_temprature()
+                return self._calc_high_humidity_middle_temperature()
 
             if self._temperature >= 120:
-                return self._calc_high_huminidy_high_temprature()
+                return self._calc_high_humidity_high_temperature()
 
-    def _calc_very_low_huminidy_low_temprature(self) -> float:
+    def _calc_very_low_humidity_low_temperature(self) -> float:
         """
         Calculate the used water when huminidy less than 20 percent and low temperature are set.
         :return:
@@ -103,20 +103,20 @@ class Calculate_Steam:
 
         return ((self._humitidy - 1) * 10 * 35) / 39
 
-    def _calc_very_low_huminidy_high_temprature(self) -> float:
+    def _calc_very_low_humidity_high_temperature(self) -> float:
         """
         Calculate the used water when huminidy less than 20 and high temperature are set.
         :return:
         """
 
-        calc_part_one = self._calc_very_low_huminidy_low_temprature()
+        calc_part_one = self._calc_very_low_humidity_low_temperature()
 
-        if self._high_temprature:
+        if self._high_temperature:
             return calc_part_one * ((330 - self._temperature) / 210)
 
         return calc_part_one * ((230 - self._temperature) / 110)
 
-    def _calc_low_huminidy_low_temprature(self) -> float:
+    def _calc_low_humidity_low_temperature(self) -> float:
         """
         Calculate the used water when low huminidy and low temperature are set.
         :return:
@@ -126,20 +126,20 @@ class Calculate_Steam:
             return ((self._humitidy - 15) / 75) * 675
         return (self._humitidy / 90) * 675
 
-    def _calc_low_huminidy_high_temprature(self) -> float:
+    def _calc_low_humidity_high_temperature(self) -> float:
         """
         Calculate the used water when low huminidy and high temperature are set.
         :return:
         """
 
-        calc_part_one = self._calc_low_huminidy_low_temprature()
+        calc_part_one = self._calc_low_humidity_low_temperature()
 
-        if self._high_temprature:
+        if self._high_temperature:
             return calc_part_one * ((330 - self._temperature) / 210)
 
         return calc_part_one * ((230 - self._temperature) / 110)
 
-    def _calc_high_huminidy_low_temprature(self) -> float:
+    def _calc_high_humidity_low_temperature(self) -> float:
         """
         Calculate the used water when high huminidy and low temperature are set.
         :return:
@@ -147,19 +147,19 @@ class Calculate_Steam:
 
         return 325 * ((self._humitidy - 90) / 10) + 675
 
-    def _calc_high_huminidy_middle_temprature(self) -> float:
+    def _calc_high_humidity_middle_temperature(self) -> float:
         """
         Calculate the used water when high huminidy and middle temperature are set.
         :return:
         """
 
-        calc_part_one = self._calc_high_huminidy_low_temprature()
+        calc_part_one = self._calc_high_humidity_low_temperature()
 
         calc_part_two = 75 * ((self._humitidy - 90) / 10) + 675
 
         return (calc_part_one - calc_part_two) * ((120 - self._temperature) / 10) + calc_part_two
 
-    def _calc_high_huminidy_high_temprature(self) -> float:
+    def _calc_high_humidity_high_temperature(self) -> float:
         """
         Calculate the used water when high huminidy and high temperature are set.
         :return:
@@ -167,7 +167,7 @@ class Calculate_Steam:
 
         calc_part_one = 75 * ((self._humitidy - 90) / 10) + 675
 
-        if self._high_temprature:
+        if self._high_temperature:
             return calc_part_one * ((330 - self._temperature) / 210)
 
         return calc_part_one * ((230 - self._temperature) / 110)
