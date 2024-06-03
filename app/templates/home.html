@@ -41,6 +41,10 @@ Copyright (c) [2024] [Sebastian Kliem]
 
                 <p>
                     Calculationsmethod:
+                </p>
+                <p>
+                    Since SW-Version 9.29 the correction is disabled.
+                </p>
                     <div class="temprature_setting">
                         <input type="radio" id="without" name="calculation_method" value="0" checked>
                         <label for="without">without -15 correction:</label>
@@ -49,7 +53,8 @@ Copyright (c) [2024] [Sebastian Kliem]
                         <input type="radio" id="with" name="calculation_method" value="1">
                         <label for="with">with -15 correction:</label>
                     </div>
-                </p>
+
+                <hr>
 
                 <p>
                     <label for="temperature">Temperature: </label>
@@ -66,15 +71,21 @@ Copyright (c) [2024] [Sebastian Kliem]
                     </div>
                 </p>
 
+                <hr>
+
                 <p>
                     <label for="max_flow_in">Desired flow of the valve in l/h</label>
                     <input type="number" id="max_flow_in" name="max_flow_in" min="0" max="999" value="10">
                 </p>
 
+                <hr>
+
                 <p>
                     <label for="humidity">Humidity in %</label>
                     <input type="number" id="humidity" name="humidity" min="0" max="100" value="100">
                 </p>
+
+                <hr>
 
                 <p>
                     <label for="high_temperature">Parameter for high-temperature enabled?</label>
